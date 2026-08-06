@@ -56,7 +56,62 @@
 
 //
 // =============================================================================
-// YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
+// YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in// =============================================================================
+
+const readlineSync = require('readline-sync');
+
+// Part A — Single Table
+function printSingleTable(num) {
+    if (num <= 0) {
+        console.log("Error: Number must be positive.");
+        return;
+    }
+
+    console.log(`\nMultiplication Table for ${num}:`);
+    for (let i = 1; i <= 12; i++) {
+        console.log(`${num} x ${i} = ${num * i}`);
+    }
+}
+
+// Part B — Tables from 1 to N
+function printTablesUpToN(N) {
+    if (N <= 0) {
+        console.log("Error: Number must be positive.");
+        return;
+    }
+
+    for (let num = 1; num <= N; num++) {
+        console.log(`\nMultiplication Table for ${num}:`);
+        for (let i = 1; i <= 12; i++) {
+            console.log(`${num} x ${i} = ${num * i}`);
+        }
+        console.log("---------------------------");
+    }
+}
+
+// Main function
+function main() {
+    console.log("Multiplication Table Menu:");
+    console.log("1. Single Table");
+    console.log("2. Tables from 1 to N");
+
+    let choice = readlineSync.questionInt("Select an option (1 or 2): ");
+
+    if (choice === 1) {
+        let num = readlineSync.questionInt("Enter a number: ");
+        printSingleTable(num);
+    } else if (choice === 2) {
+        let N = readlineSync.questionInt("Enter a number N: ");
+        printTablesUpToN(N);
+    } else {
+        console.log("Invalid choice.");
+    }
+}
+
+// Run the program
+main();
+
+
 // =============================================================================
 
 
