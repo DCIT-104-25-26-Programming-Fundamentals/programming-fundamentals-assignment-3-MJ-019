@@ -72,6 +72,102 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
+
+const readlineSync = require('readline-sync');
+
+// Arithmetic operation functions
+function add(x, y) {
+    return x + y;
+}
+
+function subtract(x, y) {
+    return x - y;
+}
+
+function multiply(x, y) {
+    return x * y;
+}
+
+function divide(x, y) {
+    if (y === 0) {
+        return "Error: Cannot divide by zero.";
+    }
+    return (x / y).toFixed(2);
+}
+
+function modulus(x, y) {
+    if (y === 0) {
+        return "Error: Cannot perform modulus with zero.";
+    }
+    return x % y;
+}
+
+function exponentiate(x, y) {
+    return x ** y;
+}
+
+// Main program loop
+function main() {
+    while (true) {
+        console.log("\n============================");
+        console.log("       SIMPLE CALCULATOR");
+        console.log("============================");
+        console.log("1. Addition");
+        console.log("2. Subtraction");
+        console.log("3. Multiplication");
+        console.log("4. Division");
+        console.log("5. Modulus");
+        console.log("6. Exponentiation");
+        console.log("7. Quit");
+
+        let choice = readlineSync.questionInt("Select an operation (1-7): ");
+
+        if (choice === 7) {
+            console.log("Goodbye!");
+            break;
+        }
+
+        if (choice < 1 || choice > 7) {
+            console.log("Invalid choice. Please select a number between 1 and 7.");
+            continue;
+        }
+
+        let x = readlineSync.questionFloat("Enter first number: ");
+        let y = readlineSync.questionFloat("Enter second number: ");
+
+        let result;
+        switch (choice) {
+            case 1:
+                result = add(x, y);
+                console.log(`Result: ${x} + ${y} = ${result}`);
+                break;
+            case 2:
+                result = subtract(x, y);
+                console.log(`Result: ${x} - ${y} = ${result}`);
+                break;
+            case 3:
+                result = multiply(x, y);
+                console.log(`Result: ${x} * ${y} = ${result}`);
+                break;
+            case 4:
+                result = divide(x, y);
+                console.log(`Result: ${x} / ${y} = ${result}`);
+                break;
+            case 5:
+                result = modulus(x, y);
+                console.log(`Result: ${x} % ${y} = ${result}`);
+                break;
+            case 6:
+                result = exponentiate(x, y);
+                console.log(`Result: ${x} ** ${y} = ${result}`);
+                break;
+        }
+    }
+}
+
+// Run the program
+main();
+
 // =============================================================================
 
 
