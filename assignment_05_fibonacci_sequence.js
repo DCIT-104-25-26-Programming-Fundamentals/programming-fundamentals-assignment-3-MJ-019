@@ -15,7 +15,7 @@
 // HOW TO RUN THIS PROGRAM
 // -----------------------------------------------------------------------------
 // 1. Install the input library (only once):  npm install readline-sync
-// 2. Run the program:                        node assignment_05_fibonacci_sequence.js
+// 2. Run the program:                        npm install readline-sync
 //
 // -----------------------------------------------------------------------------
 // PART A — Print the First N Terms
@@ -52,6 +52,71 @@
 //
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
+
+const readlineSync = require('readline-sync');
+
+// Part A — Print the First N Terms
+function printFibonacci(n) {
+    if (n <= 0) {
+        console.log("Error: Number of terms must be positive.");
+        return;
+    }
+
+    let a = 0, b = 1;
+    let sequence = "";
+
+    for (let i = 1; i <= n; i++) {
+        sequence += a + " ";
+        let next = a + b;
+        a = b;
+        b = next;
+    }
+
+    console.log("Fibonacci sequence: " + sequence.trim());
+}
+
+// Part B — Check if a Number Belongs to the Sequence
+function checkFibonacci(num) {
+    if (num < 0) {
+        console.log("Error: Number must be non-negative.");
+        return;
+    }
+
+    let a = 0, b = 1;
+    while (a <= num) {
+        if (a === num) {
+            console.log(num + " is a Fibonacci number.");
+            return;
+        }
+        let next = a + b;
+        a = b;
+        b = next;
+    }
+    console.log(num + " is NOT a Fibonacci number.");
+}
+
+// Main function
+function main() {
+    console.log("Fibonacci Sequence Menu:");
+    console.log("1. Print the First N Terms");
+    console.log("2. Check if a Number Belongs to the Sequence");
+
+    let choice = readlineSync.questionInt("Select an option (1 or 2): ");
+
+    if (choice === 1) {
+        let n = readlineSync.questionInt("How many terms? ");
+        printFibonacci(n);
+    } else if (choice === 2) {
+        let num = readlineSync.questionInt("Enter a number to check: ");
+        checkFibonacci(num);
+    } else {
+        console.log("Invalid choice.");
+    }
+}
+
+// Run the program
+main();
+
 // =============================================================================
 
 
